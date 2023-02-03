@@ -2,9 +2,16 @@ const express = require('express');
 const app = express();
 
 const {Pool, Client} = require('pg'); 
-////////client setup
+////////client setup///////////////////////////
 
-
+// const client = new Client(
+//     { host: 'localhost',
+//     user: 'postgres',
+//     password: 'docker',
+//     port: 5432,
+//     database: 'testdb1'
+// })
+// client.connect()
 ////////////pool setup///////////////////////
 const pool = new Pool(
     { user: 'postgres',
@@ -33,11 +40,9 @@ const port = 3002;
 // app.post('/push', (req, res) => {
 //     let string = req.body
 //     client.query(`INSERT INTO FROM testtable(id, name, title) VALUES(${string})`)
-         
 //     })
 /////////////////pool READ //////////////////////////////////////////
 app.get('/allrows', (req, res) => {
-    
     pool.query('SELECT * FROM testtable' ).then(
         (data) => {
             res.send(data.rows)

@@ -25,9 +25,11 @@ function FrontEnd() {
     <div>
       {/* this div renders the data [{"id":1,"name":"marc","title":"software dev"}] */}
       {/* it renders the first element with the name key of the object */}
-      {}
+      {/* I had to put the data in a ternary statement because without it, the React tries to render the 
+      object before the promise has been fulfilled */}
       <div>{data? data[0].name: <></>}</div>
-      <div>{data[0].name}</div>
+      {/* to test rendering the component without the ternary, uncomment line 32 and check the console. */}
+      {/* <div>{data[0].name}</div> */}
     </div>
   )
 }
